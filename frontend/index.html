@@ -30,7 +30,9 @@
   <script>
 
     async function main() {
-      res = await fetch('http://localhost:3000/pokemons')
+      // const url = 'http://localhost:3000'
+      const url = 'https://w11-demo.onrender.com'
+      res = await fetch(`${url}/pokemons`)
       resJson = await res.json()
       tmpHTML = ""
       for (let i = 0; i < resJson.length; i++) {
@@ -52,7 +54,7 @@
       console.log(list);
       for (let i = 0; i < list.length; i++) {
         list[i].addEventListener('click', async function () {
-          res = await fetch(`http://localhost:3000/pokemon?pname=${list[i].querySelector('h2').innerHTML.trim()}`)
+          res = await fetch(`${url}/pokemon?pname=${list[i].querySelector('h2').innerHTML.trim()}`)
           resJson = await res.json()
           alert(JSON.stringify(resJson))
         })
